@@ -19,3 +19,47 @@ var bButton = document.getElementsById('b');
 var cButton = document.getElementsById('c');
 var dButton = document.getElementById('d');
 
+// quiz questions and answers
+var questions = [{
+    question: 'What does API stand for?',
+    answerA: 'Application Programming Interface',
+    answerB: 'Application Program Interface',
+    answerC: 'Advanced Program Integration',
+    answerD: 'Advanced Programming Interface',
+    correctAnswer: 'a'},
+    {
+    question: 'Which HTTP method is typically used to retrieve data from an API?',
+    answerA: 'Post',
+    answerB: 'Put',
+    answerC: 'Get',
+    answerD: 'Delete',
+    correctAnswer: 'c'
+    },
+
+    {
+    question: 'What is JSON?',
+    answerA: 'JavaScript Object Notation',
+    answerB: 'Java Server Oriented Network',
+    answerC: 'JavaScript Open Network',
+    answerD: 'Java Source Object Naming',
+    correctAnswer: 'a'
+    },
+    {
+    question: 'Which HTTP method is used to create a new resource using an API?',
+    answerA: 'Get',
+    answerB: 'Post',
+    answerC: 'Put',
+    answerD: 'Delete',
+    correctAnswer: 'b'
+    },
+
+    {
+    question: 'What does a 404 HTTP status code indicate?',
+    answerA: 'Unauthorized Acess',
+    answerB: 'Page not found',
+    answerC: 'Internal server error',
+    answerD: 'Successful request',
+    correctAnswer: 'b'
+    },
+];
+
