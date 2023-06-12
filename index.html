@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maximum API Quiz</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <div id="beginning">
+            <h2>This Quiz is designed to test ones knowledge of API concepts</h2>
+            <button id="startbtn">Begin API Quiz</button>
+            <button id="startPageHighscore" onclick="showHighscore()">High Scores</button>
+        </div>
+
+        <div id="quiz">
+            <div id="time">Time Remaining: </div>
+            <div id="questions"><p>Question Placeholder</p></div>
+            <button id="a" onclick="checkAnswer('a')">A</button>
+            <button id="b" onclick="checkAnswer('b')">B</button>
+            <button id="c" onclick="checkAnswer('c')">C</button>
+            <button id="d" onclick="checkAnswer('d')">D</button>
+            <div id="result"></div>
+        </div>
+
+        <div id="gameover">
+
+            <div id="finalScore"></div>
+            <input type="text" size="45" placeholder="Input your initials to record your High Score" name="initials" id="initials"/>
+            <button id="submitScore">Submit Score</button>
+        </div>
+
+        <div id="leaderboards">
+            <div id="high-scorePage">
+                <div id="topHighscore">
+                    <h3>User Initials</h3>
+                    <h3>Score</h3>
+                </div>
+                <div id="highscore-initials"></div>
+                <div id="highscore-score"></div>
+            </div>
+            <div id="endGameBtn">
+                <button id="tryAgain" onclick="replayQuiz()">Try Again</button>
+                <button id="clearHighscore" onclick="clearScore()">Clear HighScores</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
