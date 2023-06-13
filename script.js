@@ -63,3 +63,27 @@ var questions = [{
     },
 ];
 
+
+
+// initialize variables for quiz questions, current question, timer, score, and correct
+var finalQuestion = questions.length;
+var currentQuestion = 0;
+var timeLeft = 90;
+var timerInterval;
+var score = 0;
+var correct;
+
+// generate a quiz question and update the UI with the question and answer options
+function generateQuizQuestion(){
+    gameoverDiv.style.display = "none";
+    
+    if (currentQuestion === finalQuestion){
+        return showScore();
+    } 
+    var currentQuestion = quizQuestions[currentQuestion];
+    questionsEl.innerHTML = "<p>" + currentQuestion.question + "</p>";
+    aButton.innerHTML = currentQuestion.answerA;
+    bButton.innerHTML = currentQuestion.answerB;
+    cButton.innerHTML = currentQuestion.answerC;
+    dButton.innerHTML = currentQuestion.answerD;
+};
