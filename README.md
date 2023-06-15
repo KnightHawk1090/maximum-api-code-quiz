@@ -22,7 +22,10 @@ WHEN the game is over
 THEN I can save my initials and score
 ```
 
-### GitHub Repository https://github.com/KnightHawk1090/maximum-api-code-quiz
+### GitHub Repository
+https://github.com/KnightHawk1090/maximum-api-code-quiz
+### Live URL
+https://knighthawk1090.github.io/maximum-api-code-quiz/
 
 ### Sample images
 ![image](https://github.com/KnightHawk1090/maximum-api-code-quiz/assets/121210332/29ce0446-882a-4fa1-8df9-61fa753469cb)
