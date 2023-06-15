@@ -104,3 +104,101 @@ function startQuiz() {
   }, 1000);
   quizBody.style.display = "block";
 }
+
+// This function is the end page screen that displays your score after either completing the quiz or upon timer run out
+function showScore() {
+    quizBody.style.display = "none";
+    gameover.style.display = "flex";
+    clearInterval(timerInterval);
+    highscoreName.value = "";
+    finalscore.innerHTML = "You got " + score + " out of " + questions.length + " correct!";
+  }
+  
+  // On click of the submit button, we run the function highscore that saves and stringifies the array of high scores already saved in local storage
+  // as well as pushing the new user name and score into the array we are saving in local storage. Then it runs the function to show high scores.
+  subScoreBtn.addEventListener("click", function highscore() {
+    if (highscoreName.value === "") {
+      alert("Initials cannot be blank");
+      return false;
+    } else {
+      var savedHighscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
+      var currentUser = highscoreName.value.trim();
+      var currentHighscore = {
+        name: currentUser,
+        score: score
+      };
+  
+      gameover.style.display = "none";
+      highscoreSection.style.display = "flex";
+      highscore.style.display = "block";
+      endQuizBtn.style.display = "flex";
+  
+      savedHighscores.push(currentHighscore);
+      localStorage.setItem("savedHighscores", JSON.stringify(savedHighscores));
+      generateHighscores();
+    }
+  });
+
+  // This function clears the list for the high scores and generates a new high score list from local storage
+function generateHighscores() {
+  highscoreNameDisplay.innerHTML = "";
+  showHighscores.innerHTML = "";
+  var highscores = JSON.parse(localStorage.getItem("savedHighscores")) || [];
+  for (i = 0; i < highscores.length; i++) {
+    var newNameSpan = document.createElement("li");
+    var newScoreSpan = document.createElement("li");
+    newNameSpan.textContent = highscores[i].name;
+    newScoreSpan.textContent = highscores[i].score;
+    highscoreNameDisplay.appendChild(newNameSpan);
+    showHighscores.appendChild(newScoreSpan);
+  }
+}
+
+// This function displays the high scores page while hiding all of the other pages
+function showHighscore() {
+  beginQuiz.style.display = "none";
+  gameover.style.display = "none";
+  highscoreSection.style.display = "flex";
+  highscore.style.display = "block";
+  endQuizBtn.style.display = "flex";
+
+  generateHighscores();
+}
+
+// This function clears the local storage of the high scores as well as clearing the text from the high score board
+function clearScore() {
+  window.localStorage.clear();
+  highscoreNameDisplay.textContent = "";
+  showHighscores.textContent = "";
+}
+
+// This function sets all the variables back to their original values and shows the home page to enable replay of the quiz
+function replayQuiz() {
+  highscoreSection.style.display = "none";
+  gameover.style.display = "none";
+  beginQuiz.style.display = "flex";
+  timeLeft = 90;
+  score = 0;
+  currentQuestion = 0;
+}
+
+// This function checks the response to each answer
+function checkAnswer(answer) {
+  correct = questions[currentQuestion].correctAnswer;
+
+  if (answer === correct && currentQuestion !== finalQuestion) {
+    score++;
+    alert("That Is Correct!");
+    currentQuestion++;
+    generateQuizQuestion();
+  } else if (answer !== correct && currentQuestion !== finalQuestion) {
+    alert("That Is Incorrect.");
+    currentQuestion++;
+    generateQuizQuestion();
+  } else {
+    showScore();
+  }
+}
+
+// This button starts the quiz!
+beginQuizBtn.addEventListener("click", startQuiz);
